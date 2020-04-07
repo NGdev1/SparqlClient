@@ -1,5 +1,6 @@
 package com.university.itis.services;
 
+import com.university.itis.config.SparqlQueryConfig;
 import com.university.itis.utils.PrefixesStorage;
 import org.apache.jena.query.ParameterizedSparqlString;
 import org.apache.jena.query.QueryExecution;
@@ -12,9 +13,9 @@ import java.util.*;
 
 public class ClassesRequestsService {
 
-    PrefixesStorage prefixesStorage;
+    PrefixesStorage prefixesStorage = SparqlQueryConfig.shared.configurePrefixes();
 
-    SparqlHttpClient sparqlHttpClient;
+    SparqlHttpClient sparqlHttpClient = SparqlQueryConfig.shared.configureSparqlHttpClient();
 
     private String LANGUAGE1 = "ru";
     private String LANGUAGE2 = "en";

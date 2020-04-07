@@ -1,5 +1,6 @@
 package com.university.itis.services;
 
+import com.university.itis.config.SparqlQueryConfig;
 import com.university.itis.dto.TripleDto;
 import com.university.itis.utils.PrefixesStorage;
 import com.university.itis.utils.UriStorage;
@@ -14,11 +15,11 @@ import java.util.List;
 
 public class PredicatesRequestsService {
 
-    PrefixesStorage prefixesStorage;
+    private PrefixesStorage prefixesStorage = SparqlQueryConfig.shared.configurePrefixes();
 
-    SparqlHttpClient sparqlHttpClient;
+    private SparqlHttpClient sparqlHttpClient = SparqlQueryConfig.shared.configureSparqlHttpClient();
 
-    UriStorage uriStorage;
+    private UriStorage uriStorage = SparqlQueryConfig.shared.configureUriStorage();
 
     //returns suitable triples for question
     public List<TripleDto> getSuitableTriplesStepOne(String entityUri) {

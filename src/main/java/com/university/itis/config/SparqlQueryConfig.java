@@ -18,11 +18,13 @@ public class SparqlQueryConfig {
 
     private ObjectMapper mapper = new ObjectMapper();
 
-    public SparqlQueryConfig() {
+    public static SparqlQueryConfig shared = new SparqlQueryConfig();
+
+    private SparqlQueryConfig() {
         mapper.enable(JsonParser.Feature.ALLOW_COMMENTS);
     }
 
-    SparqlHttpClient configureSparqlHttpClient() {
+    public SparqlHttpClient configureSparqlHttpClient() {
         String endpointUrl;
         try {
             InputStream resource = getClass()
@@ -39,7 +41,7 @@ public class SparqlQueryConfig {
         return new SparqlHttpClient(endpointUrl);
     }
 
-    PrefixesStorage configurePrefixes() {
+    public PrefixesStorage configurePrefixes() {
         TypeReference<LinkedHashMap<String, String>> typeReference = new TypeReference<LinkedHashMap<String, String>>(){};
         Map<String, String> prefixes;
         try {
@@ -57,7 +59,7 @@ public class SparqlQueryConfig {
         return new PrefixesStorage(prefixes);
     }
 
-    UriStorage configureUriStorage() {
+    public UriStorage configureUriStorage() {
         TypeReference<LinkedHashMap<String, String>> typeReferenceClasses = new TypeReference<LinkedHashMap<String, String>>(){};
         Map<String, String> classes;
         try {
