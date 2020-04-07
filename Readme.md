@@ -8,5 +8,9 @@
 - Получить все триплеты для сущности
 - Разворачивает сокращения URI, например dbr:Karlsruhe -> http://dbpedia.org/resource/Karlsruhe/
 
+Файлы настроек проекта:
+- blacklist.json - сущности для исключения (мусор)
+- configprops.json - url подключения к серверу, список префиксов (основных сокращений)
+
 Схема архитектуры:
 ![Architecture](Architecture.png)
